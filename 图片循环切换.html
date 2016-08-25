@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片切换顺序播放</title>
+<style>
+	img{
+		border:none;
+		vertical-align:top;
+	}
+	iuput{
+		display:inline-block;
+		width:40px;
+		height:20px;
+		line-height:20px;
+		font-size:14px;
+		text-align:center;
+		border:none;
+		background:#CCC;
+		opacity:.6;
+	}
+	.wrap{
+		position:relative;
+		width:320px;
+		height:260px;
+		margin:30px auto;
+	}
+	#pre{
+		position:absolute;
+		left:0;
+		top:120px;
+	}
+	#next{
+		position:absolute;
+		right:0;
+		top:120px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+    	<img src="img/1.jpg" id="imgs"/>
+        <input type="button" id="pre" value="<"/>
+        <input type="button" id="next" value=">"/>
+    </div>
+    <script>
+		var imgs=document.getElementById('imgs');
+		var pre=document.getElementById('pre');
+		var next=document.getElementById('next');
+		var arr=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg']//定义一个数组，将imgs的路径存为一个库
+		var n=0;//定义一个初始值
+		//点击next时触发的事件
+		next.onclick=function(){
+			n=n+1;//没点击一次按钮n的值就加1
+			if(n>arr.length-1){//判断n的值是否大于数组中最后一个数据下标的值
+				n=0;
+				//n的值大于数组中最后一个数据的下标时，图片切换到第一张并进入循环。
+			 }
+			imgs.src=arr[n];
+		}
+		//点击上一张按钮时触发的事件
+		pre.onclick=function(){
+			n=n-1;//没点击一次，n的值就减1
+			if(n<0){//判断n的值是否小于数组中第一个数据下标
+				n=arr.length-1;//n的值小于数组中第一个数据下标时，图片切换到最后一张并进入循环
+			}
+			imgs.src=arr[n];
+		}
+    </script>
+</body>
+</html>
