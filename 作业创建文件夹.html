@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#content {
+				padding: 20px;
+				width: 436px;
+			}
+			#content div{
+				width: 59px;
+				height: 65px;
+				padding: 20px;
+				margin:0 0 10px 10px;
+				background: url(img/file.png) no-repeat center;
+				background-position: 17px 15px;
+				position: relative;
+				float: left;
+			}
+			#content div.active{
+				background: url(img/file.png) #e0f0f0 no-repeat;
+				background-position: 17px 15px;
+			}
+			#content div:hover{
+				background: url(img/file.png) #e0f0f0 no-repeat;
+				background-position: 17px 15px;
+			}
+			#content label{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 18px;
+				height: 18px;
+				background:url(img/ico.png) no-repeat;
+				background-position: 0 -370px;
+				display: none;
+			} 
+			#content label.active2{
+				display: block;
+				background:url(img/ico.png) no-repeat;
+				background-position: 0 -421px;
+			}
+			#content div:hover label{
+				display: block;
+			}
+			#content input{
+				position: absolute;
+				left: 2px;
+				bottom: 5px;
+				display: block;
+				width: 90px;
+				height: 20px;
+				font: 18px/20px "微软雅黑";
+				text-align: center;
+				border: none;
+				background: none;
+			}
+			.block{
+				background: #000;
+				border:1px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="creat" value="新建文件夹" />
+		<input type="button" id="delet" value="删除选中文件夹" />
+		<label>全选<input type="checkbox" id="checkAll"/></label>
+		<div id="content">
+			<!-- <div><label></label><input type="text"/></div>
+			<div><label></label><input type="text"/></div>
+			<div><label></label><input type="text"/></div> -->
+		</div>
+	</body>
+</html>
+<script src="js/data.js"></script>
+<script type="text/javascript">
+	var content=document.getElementById('content');
+	var allDiv=content.getElementsByTagName('div');
+	//根据数据生成结构函数
+	function creatHtml(data){
+		var newDiv=document.createElement('div');
+        newDiv.innerHTML='<label class="checkbox"></label><input type="text" value='+data.title+'>';
+         return newDiv;
+	}
+	//新建文件夹的函数
+	function newHtml(){
+		var newDiv=document.createElement('div');
+        newDiv.innerHTML='<label class="checkbox"></label><input type="text" value="" style="border:1px solid blue;background:#fff;"/>';
+        var text=newDiv.getElementsByTagName('input')[0];//获取input
+       /*	setTimeout(function(){
+       	 	text.focus();		//由于浏览器解析js需要一定的时间，用延迟函数来添加focus
+       	}, 0)*/;					//text获取焦点
+        return newDiv;
+	}
+	//循环数据
+    for(var i=0;i<data.files.length;i++){
+    	if(data.files[i].pid===0){
+    		content.appendChild(creatHtml(data.files[i]));
+    	}    
+    };
+
+    //封装谁被选中函数
+	var arr=[];			//定义一个空数组，用来存放被选中的label
+	function whoSelect(obj2){
+		if(obj2.status){
+			arr.push(obj2.parentNode);	//obj2的父级给push进数组
+		}else{
+			arr.pop(obj2.parentNode);	//如果没被选中就把obj2的父级删除
+		}
+		console.log(arr.length)
+		if(arr.length===allDiv.length){
+			checkAll.checked=true;
+			checkAll.status=false;
+		}else{
+			checkAll.checked=false;
+			checkAll.status=true;
+		}
+		return arr;
+	}
+
+	//封装label点击函数
+	function labelClick(obj){
+		var label=obj.firstElementChild;//获取传入参数的第一个子级label
+		label.status=true;				//设置label自身的开关
+		label.onclick=function(){
+			if(this.status){
+				obj.className="active";	//设置传入div的className
+	    		this.className="active2";//设置label的className
+			}else{
+				obj.className="";
+	    		this.className="";
+			}
+			whoSelect(this);
+			this.status=!this.status;		//重置开关
+		}
+	}
+    /*******************************************************************************************/
+	//点击新建按钮
+	var  creat=document.getElementById('creat');
+	creat.onmouseup=function  () {
+		var Div=newHtml();	
+		content.appendChild(Div);
+		var text=Div.getElementsByTagName('input')[0];
+		text.focus();			//给输入框获取焦点
+		text.onblur=function(){
+			if(text.value==""){
+				content.removeChild(Div);
+			}else{
+				console.log(checkAll.checked,checkAll.status)
+				text.style.background="none";
+				text.style.border="none";
+				checkAll.checked=false;
+				checkAll.status=true;
+			}	
+		}
+		labelClick(Div);//调用label的点击函数
+	}
+	//给每一个div添加点击处理
+	for(var i=0;i<allDiv.length;i++){
+	   labelClick(allDiv[i]);
+	}
+	/*全选按钮的状态*/
+	var checkAll=document.getElementById('checkAll');
+	checkAll.status=true; 
+	checkAll.onclick=function(){
+		//循环所有的div
+		for(var i=0;i<allDiv.length;i++){
+		    var label=allDiv[i].firstElementChild;
+		    if(checkAll.status){
+		    	arr.push(allDiv[i]);			
+		    	allDiv[i].className="active";	//设置传入div的className
+    			label.className="active2";//设置label的className
+    			label.status=false;
+		    }else{
+		    	arr.pop(allDiv[i]);
+		    	allDiv[i].className="";
+	    		label.className="";
+	    		label.status=true;
+		    }
+		}
+		checkAll.status=!checkAll.status;
+	}
+
+	//删除按钮
+	
+</script>
