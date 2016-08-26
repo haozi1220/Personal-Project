@@ -1,0 +1,137 @@
+#supporter{
+	padding:23px 0 55px;
+	background: url(../img/TB18w.png) no-repeat center 0;
+}
+#supporter .supporter_fluid{
+	width: 1200px;
+	margin: 0 auto;
+}
+#supporter .supporter_left{
+	float: left;
+	text-align: left;
+	width: 544px;
+}
+#supporter .supporter_left h2{
+	font: bold 42px/100px "宋体";
+	color: #fff;
+}
+#supporter .supporter_left p{
+	font: 16px/28px "宋体";
+	color: #a9b2b8;
+	text-align: left;
+	padding-bottom: 54px;
+}
+#supporter .supporter_left a{
+	display: inline-block;
+	line-height: 30px;
+	color: #0687c1;
+	border: 1px solid #0687cb;
+	padding:0 20px;
+}
+#supporter .supporter_left .ask{
+	margin-right: 12px;
+}
+#supporter .supporter_left a:hover{
+	color: #fffffa;
+	background: #0687cb;
+}
+#supporter .supporter_right{
+	float: right;
+	padding-top: 98px;
+	text-align: left;
+}
+#supporter .supporter_right input{
+	display: block;
+	width: 278px;
+	height: 40px;
+	background: #6f8797 url(../img/sousuo1.png) no-repeat right 0;
+	border-radius: 5px;
+	color: #666;
+}
+#supporter .supporter_right input:focus{
+	color: #e4e4e4;
+	background:#fff url(../img/sousuo.png) no-repeat right 0;
+}
+#supporter .supporter_right p{
+	line-height: 36px;
+	color: #c0c9d1;
+}
+#supporter .supporter_right a{
+	display: inline-block;
+	color: #fff;
+	padding: 0 5px;
+}
+.issue{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 45px 0 57px;
+}
+.issue h2{
+	font: bold 22px/38px "宋体";
+	color: #333;
+	border-bottom: 2px solid #0687cb;
+}
+.issue .issue_list a,
+.issue .notice_list a{
+	overflow: hidden;
+	display: block;
+	padding-left: 7px;
+	line-height: 48px;
+	color: #666;
+	border-bottom: 1px solid #f7f7f7;
+}
+.issue .issue_list a:hover,
+.issue .notice_list a:hover{
+	color: #0687cb;
+}
+.issue .issue_list span,
+.issue .notice_list span{
+	display: inline-block;
+	float: left;
+	padding-right: 13px;
+}
+.issue .issue_list em,
+.issue .notice_list em{
+	float: left;
+}
+.issue .issue_list u,
+.issue .notice_list u{
+	float: right;
+}
+.issue .issue_hot{
+	float: left;
+	text-align: left;
+	width: 740px;
+}
+.issue .issue_hot nav{
+	border-bottom: 1px solid #ddd;
+}
+.issue_hot nav a{
+	display: inline-block;
+	line-height: 49px;
+	color: #333;
+	padding:0 15px 1px;
+}
+.issue_hot nav a:hover{
+	color: #0687cb;
+	margin-bottom: -1px;
+	border-bottom: 1px solid #0687cb;
+}
+.issue .new_notice{
+	float: right;
+	width: 380px;
+}
+.issue .new_notice h2{
+	border-bottom:2px solid #3d4751;
+}
+.issue .issue_list .chakan,
+.issue .notice_list .chakan{
+	line-height: 55px;
+	border-bottom: none;
+}
+.notice_list .a1 em{
+	overflow: hidden;
+	max-width: 100px;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}

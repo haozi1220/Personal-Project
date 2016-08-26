@@ -1,0 +1,222 @@
+#top_bar{
+	padding:22px 0 20px;
+	background: #0182c1;
+}
+#top_bar .text{
+	width: 1200px;
+	margin: 0 auto;
+}
+#top_bar .text p {
+	float: left;
+	font: 14px/40px "宋体";
+	color: #fff;
+}
+#top_bar p a{
+	color: #fff;
+}
+#top_bar p a:hover{
+	text-decoration: underline;
+}
+#top_bar .text form{
+	float: right;
+}
+#top_bar .text input{
+	display: block;
+	width: 278px;
+	height: 40px;
+	background: #2091c8 url(../img/sousuo1.png) no-repeat right 0;
+	border-radius: 5px;
+	color: #666;
+}
+#top_bar .text input:focus{
+	color: #e4e4e4;
+	background:#fff url(../img/sousuo.png) no-repeat right 0;
+}
+#text_list{
+	padding: 42px 0 ;
+	background: url(../img/bg20.png) repeat-x;
+}
+#text_list ul{
+	width: 1200px;
+	margin: 0 auto;
+}
+#text_list ul li{
+	float: left;
+	width: 360px;
+	padding-right: 40px;
+	text-align: left;
+}
+#text_list li a{
+	display: block;
+	font: 14px/56px "宋体";
+	color: #009de7;
+	border-bottom: 1px solid #ddd;
+}
+#text_list li a:hover{
+	text-decoration: underline;
+}
+#pic_list ul{
+	width: 1200px;
+	margin: 0 auto;
+}
+#pic_list ul h5{
+	padding-bottom: 25px;
+}
+#pic_list ul li{
+	height: 285px;
+}
+#pic_list ul a{
+	float: left;
+	display: block;
+	width: 160px;
+	height: 160px;
+	padding-right:40px;
+}
+#pic_list ul .tongyong,
+#pic_list ul .qianniu,
+#pic_list ul .wuxian,
+#pic_list ul .gaode,
+#pic_list ul .zhuangxiu,
+#pic_list ul .tianmao,
+#pic_list ul .qimen,
+#pic_list ul .miandan,
+#pic_list ul .shangjia,
+#pic_list ul .jushi,
+#pic_list ul .yunwang,
+#pic_list ul .bang,
+#pic_list ul .ceshi,
+#pic_list ul .shouquan,
+#pic_list ul .cuowu,
+#pic_list ul .shangpin,
+#pic_list ul .shoufei,
+#pic_list ul .kaifa{
+	background: url(../img/sprite1.png) no-repeat;
+}
+#pic_list ul .tongyong{
+	background-position: 0 0;
+}
+#pic_list ul .qianniu{
+	background-position: 0 -170px;
+}
+#pic_list ul .wuxian{
+	background-position: 0 -341px;
+}
+#pic_list ul .gaode{
+	background-position: 0 -512px;
+}
+#pic_list ul .zhuangxiu{
+	background-position: 0 -683px;
+}
+#pic_list ul .tianmao{
+	background-position: 0 -853px;
+}
+#pic_list ul .qimen{
+	background-position: 0 -1024px;
+}
+#pic_list ul .miandan{
+	background-position: 0 -1194px;
+}
+#pic_list ul .shangjia{
+	background-position: 0 -1365px;
+}
+#pic_list ul .jushi{
+	background-position: 0 -1536px;
+}
+#pic_list ul .yunwang{
+	background-position: 0 -1707px;
+}
+#pic_list ul .bang{
+	background-position: 0 -1877px;
+}
+#pic_list ul .ceshi{
+	background-position: 0 -2048px;
+}
+#pic_list ul .shouquan{
+	background-position: 0 -2219px;
+}
+#pic_list ul .cuowu{
+	background-position: 0 -2389px;
+}
+#pic_list ul .shangpin{
+	background-position: 0 -2560px;
+}
+#pic_list ul .shoufei{
+	background-position: 0 -2731px;
+}
+#pic_list ul .kaifa{
+	background-position: 0 -2901px;
+}
+#pic_list ul .tongyong:hover,
+#pic_list ul .qianniu:hover,
+#pic_list ul .wuxian:hover,
+#pic_list ul .gaode:hover,
+#pic_list ul .zhuangxiu:hover,
+#pic_list ul .tianmao:hover,
+#pic_list ul .qimen:hover,
+#pic_list ul .miandan:hover,
+#pic_list ul .shangjia:hover,
+#pic_list ul .jushi:hover,
+#pic_list ul .yunwang:hover,
+#pic_list ul .bang:hover,
+#pic_list ul .ceshi:hover,
+#pic_list ul .shouquan:hover,
+#pic_list ul .cuowu:hover,
+#pic_list ul .shangpin:hover,
+#pic_list ul .shoufei:hover,
+#pic_list ul .kaifa:hover{
+	background: url(../img/sprite2.png) no-repeat;
+}
+#pic_list ul .tongyong:hover{
+	background-position: 0 0;
+}
+#pic_list ul .qianniu:hover{
+	background-position: 0 -171px;
+}
+#pic_list ul .wuxian:hover{
+	background-position: 0 -341px;
+}
+#pic_list ul .gaode:hover{
+	background-position: 0 -512px;
+}
+#pic_list ul .zhuangxiu:hover{
+	background-position: 0 -683px;
+}
+#pic_list ul .tianmao:hover{
+	background-position: 0 -853px;
+}
+#pic_list ul .qimen:hover{
+	background-position: 0 -1024px;
+}
+#pic_list ul .miandan:hover{
+	background-position: 0 -1195px;
+}
+#pic_list ul .shangjia:hover{
+	background-position: 0 -1365px;
+}
+#pic_list ul .jushi:hover{
+	background-position: 0 -1536px;
+}
+#pic_list ul .yunwang:hover{
+	background-position: 0 -1707px;
+}
+#pic_list ul .bang:hover{
+	background-position: 0 -1877px;
+}
+#pic_list ul .ceshi:hover{
+	background-position: 0 -2048px;
+}
+#pic_list ul .shouquan:hover{
+	background-position: 0 -2219px;
+}
+#pic_list ul .cuowu:hover{
+	background-position: 0 -2389px;
+}
+#pic_list ul .shangpin:hover{
+	background-position: 0 -2560px;
+}
+#pic_list ul .shoufei:hover{
+	background-position: 0 -2731px;
+}
+#pic_list ul .kaifa:hover{
+	background-position: 0 -2900px;
+}
