@@ -1,0 +1,428 @@
+@charset "UTF-8";
+/******************清除默认样式********************/
+h2,ul,p{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+em{
+    font-style: none;
+}
+strong{
+    font-weight: normal;
+}
+i{
+    font-style: normal;
+}
+u{
+    text-decoration: none;
+}
+img{
+    border:none;
+    vertical-align: middle;
+}
+a{
+    text-decoration: none;
+}
+.clearFix:after{
+    content: "";
+    display: block;
+    clear:both;
+}
+/*********************pic_list内容区******************************/
+#pic_list{
+    width: 996px;
+    margin: 0 auto;
+}
+.pic_list_title{
+    height: 89px;
+}
+.pic_list_title h2{
+    font: 28px/88px "微软雅黑";
+    font-weight: bold;
+    color: #333;
+    float: left;
+    padding: 0 20px 1px 0;
+}
+.pic_list_title p{
+    font: 14px/76px "微软雅黑";
+    color: #999;
+    float: left;
+    padding-top: 13px;
+}
+/*******************左边*********************************/
+.pic_list_left{
+    float: left;
+    width:100%;
+    margin-right:-268px; 
+}
+.pic_content{
+    padding-right: 27px;
+}
+.pic_content li{
+    position: relative;
+    width: 700px;
+    height: 258px;
+    margin-bottom: 31px;
+    border:1px solid #f1f1f1;
+}
+.pic_content li em{
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 83px;
+    height: 83px;
+    background: url(../image/onsaleBg.png) no-repeat 0 0;
+}
+.pic_content li img{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 479px;
+    height: 258px;
+}
+.pic_content li span{
+    position: absolute;
+    left: 67px;
+    top: 60px;
+    font: 16px/16px "微软雅黑";
+    font-weight: bold;
+    color: #333;
+}
+.pic_content li u{
+    position: absolute;
+    left: 67px;
+    top: 106px;
+    font:18px/18px Arial;
+    font-weight: bold;
+    color: #b3db5b;
+}
+.pic_content li i{
+    position: absolute;
+    left: 108px;
+    top: 112px;
+    font: 14px/14px "微软雅黑";
+    font-weight: bold;
+    color: #999;
+}
+.pic_content li strong{
+    position: absolute;
+    left: 67px;
+    top: 130px;
+    font: 13px/13px Arial;
+    color: #b3db5b;
+    font-weight: bold;
+}
+.pic_content li p{
+    font: 12px/20px "微软雅黑";
+    color: #666;
+    width: 27px;
+    position: absolute;
+    left: 17px;
+    bottom:34px;
+}
+/****************右边******************/
+.pic_list_right{
+    width: 268px;
+    float: right;
+}
+.pic_list_right_top{
+    float: right;
+    background: #f7f7f7;
+}
+.pic_list_right_top .whyTitle{
+    width: 268px;
+    height: 83px;
+    background: url(../image/whyTitleBg.png) no-repeat 13px 25px;
+}
+.pic_list_right_top .advantage{
+    padding: 20px 26px 0 25px;
+}
+.advantage li{
+    overflow: hidden;
+    padding-bottom: 25px;
+    height: 59px;
+}
+.advantage li i{
+    display: block;
+    width: 59px;
+    height: 59px;
+    background: url(../image/jingling.png) no-repeat;
+}
+.advantage li .icon1{
+    background-position: 0 0;
+}
+.advantage li .icon2{
+    background-position: 0 -69px;
+}
+.advantage li .icon3{
+    background-position: 0 -138px;
+}
+.advantage li .icon4{
+    background-position: 0 -207px;
+}
+.advantage li p{
+    float: right;
+    width: 140px;
+    padding: 4px 0 0 18px;
+}
+.advantage li strong,
+.advantage li span{
+    display: block;
+    float: left;
+}
+.advantage li span {
+    font:20px/28px "微软雅黑";
+    color: #333;
+}
+.advantage li strong{
+    font:16px/24px "微软雅黑";
+    color: #8c8c8c;
+}
+/****************右下部分*********************/
+.pic_list_right_bottom{
+    float: right;
+    width: 231px;
+    margin-top: 30px;
+    border:1px solid #c9c9c9;
+    padding: 2px 20px 0 15px;
+}
+.pic_list_right_bottom .reserve{
+    font: 12px/42px "微软雅黑";
+    padding-bottom: 2px;
+    height: 44px;
+    color: #333;
+    background:url(../image/jingling.png) repeat 0 42px; 
+    background-position: left bottom;
+}
+.pic_list_right_bottom .reserve_list{
+    padding-top: 11px;
+}
+.pic_list_right_bottom .reserve_list li{
+    padding-bottom: 26px;
+    overflow: hidden;
+}
+.pic_list_right_bottom .reserve_list img{
+    display: block;
+    float: left;
+    width:80px;
+    height: 80px;
+}
+.pic_list_right_bottom .reserve_list p{
+    float: right;
+    width: 129px;
+    padding-left: 1px;
+}
+.reserve_list p .span1{
+    font: 13px/20px "微软雅黑";
+    color: #333;
+}
+.reserve_list p .span2{
+    color: #777;
+}
+.reserve_list p .raise{
+    font: 14px/16px "微软雅黑";
+    color: #99c73c;
+    padding-top: 6px;
+}
+.reserve_list p .res_peple{
+    display: inline-block;
+    padding-left: 15px;
+    font: 12px/16px "微软雅黑";
+    color: #777;
+}
+/****************************hospital部分********************************/
+.pic_list_item_nav{
+    border: 1px solid #ededed;
+    background: #f7f7f7;
+    padding-top: 7px;
+    margin-bottom: 36px;
+}
+.pic_list_item_nav li{
+    float: left;
+}
+.pic_list_item_nav .itemCon{
+    font: 14px/24px "微软雅黑";
+    color: #666;
+    padding: 7px 33px 0 37px;
+    border-right: 1px solid #ededed;
+}
+.pic_list_item_nav .li1{
+    padding: 7px 15px 0 34px;
+}
+.pic_list_item_nav a{
+    display: inline-block;
+    font: 14px/24px "微软雅黑";
+    color: #666;
+}
+.pic_list_item_nav .li1 span{
+    font: 12px/24px Arial;
+    color: #b5b5b5;
+}
+.pic_list_item_nav a:hover{
+    color: #7bb300;
+}
+#xiajiantou{
+    float: right;
+    width: 31px;
+    height: 31px;
+}
+#xiajiantou a{
+    display: block;
+    height: 31px;
+    background: url(../image/xjt.png) no-repeat 6px 15px;
+}
+/******************hospitalContent**********************/
+.hospital_content{
+    float: left;
+    width:100%;
+    margin-right:-268px; 
+}
+.hospital_content .hospital_content_sibar{
+    width: 700px;
+    border: 1px solid #e7e7e7;
+}
+.hospital_content .sidBar{
+    position: relative;
+    border-bottom: 1px solid #e7e7e7;
+    font: 14px/26px "微软雅黑";
+    margin-bottom: 13px;
+}
+.hospital_content .sidBar a{
+    display: inline-block;
+    padding: 2px 20px 0 20px;
+    color:#333;
+    border-right: 1px solid #e7e7e7;
+}
+.hospital_content .sidBar a:hover{
+    color: #90c320;
+}
+.hospital_content .sidBar i{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(../image/jingling.png) no-repeat;
+    background-position: 5px -272px;
+}
+.hospital_content .sidBar p{
+    display: inline-block;
+    position: absolute;
+    right: 40px;
+    top: 0;
+}
+#zuojiantou,
+#youjiantou{
+    color: #a4a4a4;
+    display: inline-block;
+    text-align: center;
+    padding: 0;
+    border: none;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: #efefef;
+    border: 1px solid #e7e7e7;
+}
+#zuojiantou:hover,
+#youjiantou:hover{
+    background: #fff;
+}
+.sidBar p span{
+    display: inline-block;
+    padding: 0 12px;
+}
+/****************************hospital_list*************************/
+.hospital_content_sibar .hospital_list{
+    padding: 0 17px 0 13px;
+}
+.hospital_content_sibar .hospital_list>li{
+    padding: 20px 0;
+    border-bottom:1px solid #e5e5e5; 
+    position: relative;
+    height: 120px;
+}
+.hospital_list>li img{
+    position: absolute;
+    left: 13px;
+    top: 20px;
+}
+.hospital_list>li div{
+    position: absolute;
+    left: 157px;
+    top: 20px;
+    width: 515px;
+}
+.hospital_list>li p{
+    color: #999;
+}
+.hospital_list>li .p1{
+    font: 18px/36px "微软雅黑";
+    padding-bottom: 2px;
+    position: relative;
+}
+.hospital_list>li .p1 span{
+    display: inline-block;
+    padding-right: 10px;
+}
+.hospital_list>li .p1 .renzheng{
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    width: 22px;
+    height: 22px;
+    background: url(../image/jingling2.png) no-repeat;
+    background-position: 0 0 ;
+}
+.hospital_list>li span{
+    color: #333;
+}
+.hospital_list>li .p2{
+    font: 12px/26px "微软雅黑";
+}
+.hospital_list>li .p2 a{
+    color: #90c320;
+    display: inline-block;
+    padding-right: 12px;
+}
+#mark_list{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 91px;
+    color: #999;
+}
+#mark_list li{
+    padding: 5px 0;
+    position: relative;
+}
+#mark_list em{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    padding: 0 2px;
+    background: url(../image/jingling2.png) no-repeat;
+    background-position: 0 -126px;
+}
+#mark_list span{
+    font-size: 22px;
+    font-family: "微软雅黑";
+    color: #7bb300;
+}
+#mark_list i{
+    display: inline-block;
+    padding-left: 3px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #7bb300;
+}
+#mark_list .icon{
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: url(../image/jingling2.png) no-repeat;
+    background-position: 0 -32px;
+}
