@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background: #6F6A6A;
+		}
+		ul{
+			list-style:none;
+		}
+		li{
+			float: left;
+			margin: 5px;
+			border: 2px solid #CEF60D;
+		}
+		span{
+			display: block;
+			height: 20px;
+			font: 16px/20px "微软雅黑";
+			background: #0DEAF6;
+			text-align: center;
+			color: #141313;
+		}
+		img{
+			vertical-align: top;
+			border: none;
+			display: block;
+			width: 300px;
+			height: 200px;
+		}
+		#btn_box{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<section class="wrap">
+		<div id="btn_box">
+			<input type="button" value="从小到大" />
+			<input type="button" value="打乱顺序" />
+		</div>
+		<ul>
+			<!-- <li>
+				<img src="img/0.jpg"/>
+				<span>1-aaa</span>
+			</li>
+			<li>
+				<img src="img/1.jpg"/>
+				<span>2-bbb</span>
+			</li>
+			<li>
+				<img src="img/2.jpg"/>
+				<span>3-ccc</span>
+			</li>
+			<li>
+				<img src="img/3.jpg"/>
+				<span>4-ddd</span>
+			</li>
+			<li>
+				<img src="img/4.jpg"/>
+				<span>5-eee</span>
+			</li>
+			<li>
+				<img src="img/5.jpg"/>
+				<span>6-fff</span>
+			</li>
+			<li>
+				<img src="img/6.jpg"/>
+				<span>7-ggg</span>
+			</li>
+			<li>
+				<img src="img/7.jpg"/>
+				<span>8-hhh</span>
+			</li> -->
+		</ul>
+	</section>
+</body>
+</html>
+<script src="tools.js"></script>
+<script type="text/javascript">
+	var btn_box=$('#btn_box');
+	var input=$('input',btn_box);
+	var aSpan=$('span');
+	var aImg=$('img');
+	var ul=$('ul')[0];
+	var arr=[0,1,2,3,4,5,6,7];
+	//var arrt=[0,1,2,3,4,5,6,7];
+	var arr2=['1-aaa','2-bbb','3-ccc','4-ddd','5-eee','6-fff','7-ggg','8-hhh'];
+	var onOff=true;
+	var html='';
+	for(var j=7;j>=0;j--){
+		html+='<li><img src="img/'+j+'.jpg"/><span>'+arr2[j]+'</span></li>';			
+	}
+
+	ul.innerHTML=html;
+	console.log(onOff);
+	input[0].onclick=function(){
+		html='';
+		if(onOff){
+			input[0].value='从大到小';
+			arr.sort(function(a,b){
+				return a-b;
+			});
+			// console.log(arr) ;
+			for(var i=0;i<arr.length;i++){
+				html+='<li><img src="img/'+arr[i]+'.jpg"/><span>'+arr2[arr[i]]+'</span></li>';
+			}
+			onOff=false;
+		}else{
+			input[0].value='从小到大';
+			arr.sort(function(a,b){
+				return b-a;
+			})
+			for(var i=0;i<arr.length;i++){
+				html+='<li><img src="img/'+arr[i]+'.jpg"/><span>'+arr2[arr[i]]+'</span></li>';
+			}
+			onOff=true;
+		}
+		ul.innerHTML=html;
+		
+	}
+	input[1].onclick=function(){
+		arr.sort(function (){
+			//随机打乱数组，return后面的大于0等于小于0的数应该数随机的
+			//正数或负数随机出现的
+			return  0.5 - Math.random()
+		});
+		html='';
+		for(var i=0;i<arr.length;i++){
+			html+='<li><img src="img/'+arr[i]+'.jpg"/><span>'+arr2[arr[i]]+'</span></li>';
+		}
+		ul.innerHTML=html;
+	}
+</script>
