@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			ul{
+				position: relative;
+				width: 200px;
+				margin: 40px auto;
+				border: 2px solid #5F6617;
+				height: 215px;
+				list-style: none;
+				padding: 0;
+			}
+			li{
+				padding: 10px;
+				background: #fff;
+				background: #F7F87F;
+				border: 1px solid #000;
+			}
+		</style>
+		<script>
+		</script>
+	</head>
+
+	<body>
+		<ul id="oUl">
+			<li>
+				<span>1啦啦啦啦</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>2哈哈哈哈</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>3嘿嘿额和</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>4呱呱呱呱</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>5哥哥哥哥</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var list=document.getElementById('oUl');
+	var allLi=list.getElementsByTagName('li');
+	for(var i=0;i<allLi.length;i++){
+		func(i)
+	}
+	function func(n){
+		var btns=allLi[n].getElementsByTagName('input');
+		/*点击下一个按钮时，把当前按钮的父级插入到，这个父级下一个兄弟节点的后面*/
+		btns[1].onclick=function(){
+			var next=this.parentNode.nextElementSibling;
+			var last=this.parentNode.parentNode.lastElementChild;//获取list的最后一个子元素
+			var first=this.parentNode.parentNode.firstElementChild;//获取元素的第一个子元素
+			//没有下一个兄弟节点时，弹出提示框，并停止程序
+			if(!next){
+				list.insertBefore(last,first)
+			}else{
+				list.insertBefore(next,this.parentNode);//把当前按钮的父级的下一个兄弟节点插入到，当前父级的前面
+			}
+		}
+		btns[0].onclick=function(){
+			var prev=this.parentNode.previousElementSibling;	//后去父级节点的上一个兄弟节点
+			var next=this.parentNode.nextElementSibling;		//获取父级节点的先一个兄弟节点
+			var last=this.parentNode.parentNode.lastElementChild;//获取list的最后一个子元素
+			var first=this.parentNode.parentNode.firstElementChild;//获取元素的第一个子元素
+			//没有上一个兄弟节点时，弹出提示框，并终止执行程序
+			if(!prev){
+				list.appendChild(first);		//把第一个子级节点插入到list尾部
+			}else{
+				list.insertBefore(prev,next);//把当前父级的上一个兄弟节点插入到，当前父级下一个兄弟节点的前面
+			}
+		}
+	}
+</script>

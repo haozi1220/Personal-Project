@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			ul{
+				position: relative;
+				width: 200px;
+				margin: 40px auto;
+				border: 2px solid #5F6617;
+				height: 215px;
+				list-style: none;
+				padding: 0;
+			}
+			li{
+				padding: 10px;
+				background: #fff;
+				background: #F7F87F;
+				border: 1px solid #000;
+			}
+		</style>
+		<script>
+		</script>
+	</head>
+
+	<body>
+		<ul id="oUl">
+			<li>
+				<span>1啦啦啦啦</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>2哈哈哈哈</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>3嘿嘿额和</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>4呱呱呱呱</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+			<li>
+				<span>5哥哥哥哥</span>
+				<input type="button" value="上移">
+				<input type="button" value="下移">
+			</li>
+		</ul>
+	</body>
+</html>
+<script src="MTween3.js"></script>
+<script type="text/javascript">
+	var list=document.getElementById('oUl');
+	var allLi=list.getElementsByTagName('li');
+	var H = parseInt(allLi[0].offsetHeight);//一个li的高度
+	for(var i=0;i<allLi.length;i++){
+		allLi[i].style.position="absolute";//把所有的元素改成定位元素
+		allLi[i].style.top=i*H+"px";	//给每个li添加top值
+		func(i)		//调用函数
+	}
+	function func(n){
+		var btns=allLi[n].getElementsByTagName('input');
+		/*点击下一个按钮时，把当前按钮的父级插入到，这个父级下一个兄弟节点的后面*/
+		btns[1].onclick=function(){
+			var curT = this.parentNode.offsetTop;
+			var next=this.parentNode.nextElementSibling;
+			//没有下一个兄弟节点时，弹出提示框，并停止程序
+			if(!next){
+				alert('已经是最后一项！');
+				return;
+			}
+			list.insertBefore(next,this.parentNode);//把当前按钮的父级的下一个兄弟节点插入到，当前父级的前面
+			MTween(next,{top:curT},500)
+			MTween(this.parentNode,{top:curT+H},500);
+		}
+		btns[0].onclick=function(){
+			var prev=this.parentNode.previousElementSibling;
+			var next=this.parentNode.nextElementSibling;
+			var curT = this.parentNode.offsetTop;
+			//没有上一个兄弟节点时，弹出提示框，并终止执行程序
+			if(!prev){
+				alert('已经是最后一项了！');
+				return;
+			}
+			MTween(prev,{top:curT},500);
+			MTween(this.parentNode,{top:curT-H},500)
+			list.insertBefore(prev,next);//把当前父级的上一个兄弟节点插入到，当前父级下一个兄弟节点的前面
+		}
+	}
+</script>
