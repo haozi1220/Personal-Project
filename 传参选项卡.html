@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>传参选项卡</title>
+	<style type="text/css">
+		#div1 div,#div2 div{
+			width: 165px;
+			height: 100px;
+			background: blue;
+			font: 20px/100px "宋体";
+			color: #fff;
+			text-align: center;
+			display: none;
+		}
+		.yellow{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<input type="button" value="按钮1" class="yellow" />
+		<input type="button" value="按钮2"/>
+		<input type="button" value="按钮3"/>
+		<div style="display: block;">hello</div>
+		<div>走开，别理我</div>
+		<div>走就走</div>
+	</div>
+	<div id="div2">
+		<input type="button" value="按钮1" class="yellow" />
+		<input type="button" value="按钮2"/>
+		<input type="button" value="按钮3"/>
+		<div style="display: block;">再见</div>
+		<div>不见</div>
+		<div>不见就不见</div>
+	</div>
+	<script type="text/javascript">
+		//封装一个获取id的函数
+		function $(id){
+			return document.getElementById(id);
+		}
+		//创建一个操作函数
+		function tab(obj){
+			//获取元素下的按钮和div
+			var btns=obj.getElementsByTagName('input');
+			var divs=obj.getElementsByTagName('div');
+			//为每一个按钮添加点击处理
+			for (var i = 0; i<btns.length; i++) {
+				//获取每一btn的下标
+				btns[i].index=i;
+				btns[i].onclick=function(){
+					//点击时为其他btn清除样式，并且div的状态为隐藏
+					for(var j=0;j<btns.length;j++){
+						btns[j].className="";//所有的classNames为空
+						divs[j].style.display="none";//所有的div隐藏
+					}
+					//点击按钮时背景色变为黄色并且对应的div显示
+					this.className="yellow";
+					divs[this.index].style.display="block";
+				}
+			}
+		}
+		var div1=$('div1');//传入参数，获取id为div1元素
+		tab(div1);//为div1下的元素添加操作处理
+		var div2=$('div2');//传入参数，获取id为div2元素
+		tab(div2);//为div2下的元素添加操作处理
+	</script>
+</body>
+</html>
