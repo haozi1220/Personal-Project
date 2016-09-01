@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>剪影</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style>
+        .div{
+            width: 80px;
+            height: 80px;
+            border: 1px solid #000;
+            background: blue;
+            float:left;
+            margin-right: 10px;
+        }
+        img{
+            width: 80px;
+            height: 80px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="div"><img src="img/99.jpg" /></div>
+    <div class="div"><img src="img/99.jpg" /></div>
+    <div class="div"><img src="img/99.jpg" /></div>
+    <div class="div"><img src="img/99.jpg" /></div>
+    <div class="div"><img src="img/99.jpg" /></div>
+    <div class="div"><img src="img/99.jpg" /></div>
+</body>
+</html>
+<script src="./tools.js"></script>
+<script type="text/javascript" >
+    var box = tools.$('#box') ;
+
+    var allDiv = tools.$ ('.div',box);      //获取所有的div
+
+    /*转换布局，把所有的div转成定位元素*/
+    //for循环所有div获取其在可视区所在位置
+    var arr = [] ; //定义一个空的数组存放所有div所在坐标
+    for(var i=0;i< allDiv.length;i++){
+        arr.push({
+            left:allDiv[i].offsetLeft ,
+            top:allDiv[i].offsetTop 
+        })
+    }
+    
+    //转换布局
+    for(var i=0;i< allDiv.length;i++){
+        allDiv[i].style.position = "absolute" ;
+        allDiv[i].style.left = arr[i].left + "px" ;
+        allDiv[i].style.top = arr[i].top + "px" ;
+        allDiv[i].style.margin = 0;
+    }
+
+
+    //声明变量来存储newDiv的方位信息
+    var box2T = 0;
+    var box2L = 0;
+    var box2R = 0;
+    var box2B = 0;
+    var n = 0 ;         //定义变量来存储下标
+    var l = 0 ;
+    var t = 0 ;
+    /***********************给每一个div添加事件处理***********************/
+    for(var i=0;i< allDiv.length;i++){
+        allDiv[i].index = i ;                       //存储下标
+        allDiv[i].addEventListener("mousedown",function(ev){
+            var diV = ev.target.parentNode ;            //ev.target的父级
+            //先要克隆元素
+            var newDiv = this.cloneNode(true) ;
+            newDiv.setAttribute("class","a")
+            document.body.appendChild(newDiv) ;                   
+            //如果不把克隆的元素给添加进结构，一些定位不成立
+
+            disX = ev.clientX - newDiv.offsetLeft ;
+            disY = ev.clientY - newDiv.offsetTop ;
+            
+            n = this.index ;                    //让n的下标
+            //获取当前元素的在视口的信息
+            var boxL = Rect(this).left ;
+            var boxB = Rect(this).bottom ;
+            var boxR = Rect(this).right ;
+            var boxT = Rect(this).top ;
+            //在document上移动时
+            document.onmousemove = function(ev){
+                //获取移动时的实时坐标
+                l = ev.clientX - disX ;
+                t = ev.clientY - disY ;
+                //获取可视区宽高
+                var W = document.documentElement.clientWidth ;
+                var H = document.documentElement.clientHeight ;
+                //先判断剪影拖动的范围
+                if(l< 0) l = 0 ;
+
+                if(l >= W-newDiv.offsetWidth){
+                    l = W-newDiv.offsetWidth;
+                } 
+                if(t< 0) t = 0 ;
+                if(t > H-newDiv.offsetHeight){
+                    t = H-newDiv.offsetHeight;
+                } 
+
+                //获取newDiv移动中，在视口的信息
+                box2T = Rect(newDiv).top ;
+                box2L = Rect(newDiv).left ;
+                box2R = Rect(newDiv).right ;
+                box2B = Rect(newDiv).bottom ;
+                
+
+
+                //把实时坐标值赋给newDiv
+                newDiv.style.left = l +"px" ;
+                newDiv.style.top = t +"px" ;
+                
+            }
+            document.onmouseup =function  () {
+               
+                //鼠标抬起时判断剪影所在的位置(找出碰撞区域)
+                if (duang(newDiv,diV)) {
+                    //两者碰撞，当前div的位置不变
+                    diV.style.left = diV.offsetLeft + "px" ;         
+                    diV.style.top = diV.offsetTop + "px" ;
+                }else {
+                    //把实时坐标值赋给当前div
+                    diV.style.left = l +"px" ;
+                    diV.style.top = t +"px" ;
+                };
+                document.body.removeChild(newDiv) ; 
+                document.onmousemove = document.onmouseup = null;
+                
+            }
+            ev.preventDefault();            //阻止默认行为
+        },false);
+    }
+
+
+    //元素在可视区的一些信息
+    function Rect(obj){
+        return obj.getBoundingClientRect();
+    }
+    //碰撞的函数
+    function duang(obj1,obj2){
+        var obj1Size = Rect(obj1);
+        var obj2Size = Rect(obj2);
+
+        var boxL = obj1Size.left;
+        var boxR = obj1Size.right;
+        var boxT = obj1Size.top;
+        var boxB = obj1Size.bottom;
+
+        var box2L = obj2Size.left;
+        var box2R = obj2Size.right;
+        var box2T = obj2Size.top;
+        var box2B = obj2Size.bottom;
+
+        if(boxR < box2L || boxL > box2R ||　boxB　< box2T || boxT > box2B ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
