@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生成小方块</title>
+	<style type="text/css">
+		#list{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<!-- <li style="background:red;width:50px;height:50px;position: absolute; top: 0px;left: 0px;"></li> -->
+	</ul>
+</body>
+</html>
+<script src="tools.js"></script>
+<script src="doMove.js"></script>
+<script type="text/javascript">
+	var list=$('#list');
+	var len=20;
+	//生成20个li
+	var str='';
+	var allLi=$('li',list);//获取所有的li
+	for(var i=0;i<len;i++){
+		str+='<li style="background:red;width:50px;height:50px;position: absolute; top: 0px;left: '+i*60+'px;"></li>';
+	}
+	list.innerHTML=str;//把str的值赋给list.innerHTML
+	var timer=null;//记录定时器编号
+	var num=0;//用于存储li的下标
+	//点击document时，方块跟着往下掉
+	document.onclick=function (argument) {
+		// 先要清除定时器
+		clearInterval(timer);
+		timer=setInterval(function(){
+			//调用封装函数
+			doMove(allLi[num],'top',12,500);
+			num++;//上一个运动完之后，下一个接着运动。
+			//用if判断在最后一个运动完成时是否停掉计时器
+			if(num===len){
+				clearInterval(timer);
+			}
+
+		},200)
+	}
+</script>
