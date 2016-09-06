@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>验证QQ</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style>
+        
+    </style>
+</head>
+<body>
+   <input type="text" id="QQ" /><span id="meg"></span> 
+</body>
+</html>
+<script type="text/javascript">
+    var qq = document.getElementById('QQ') ;
+    var meg = document.getElementById('meg');
+    var re = /^[1-9]\d{4,11}$/ ;
+    qq.oninput = function  () {
+        var val = qq.value ;
+        if(re.test(val)){
+            meg.innerHTML = 'qq'+ val ;
+        }else {
+            meg.innerHTML = '不是qq' ;
+        }
+    }
+</script>
