@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>面向对象选项卡</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style>
+        p {display: none;}
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <input type="button" value="按钮一" style="background: yellow;" />
+        <input type="button" value="按钮二" />
+        <input type="button" value="按钮三" />
+        <p style="display: block;">内容一</p>
+        <p>内容二</p>
+        <p>内容三</p>
+    </div>
+    <div id="div2">
+        <input type="button" value="按钮一" style="background: yellow;" />
+        <input type="button" value="按钮二" />
+        <input type="button" value="按钮三" />
+        <p style="display: block;">内容一</p>
+        <p>内容二</p>
+        <p>内容三</p>
+    </div>
+    <input type="button" value="第一个自动播放" id="btn1" />
+    <input type="button" value="第二个停止自动播放" id="btn2" />
+    <input type="button" value="两个播放翻转" id="btn3" />
+    <input type="button" value="第一个停止自动播放" id="btn4" />
+</body>
+</html>
+<script type="text/javascript">
+    //创建构造函数
+    /*
+        形参说明：形参为传进的div，里面所有获取的元素均是在传入的元素范围内获取到的。
+     */
+    function Tab (parent) {
+        this.allInput = parent.getElementsByTagName('input') ;
+        this.allP = parent.getElementsByTagName('p') ;
+        this.len = this.allInput.length ;
+        this.timer = null ;
+        this.n = 0 ;
+    }
+
+    //把公共的方法放在原型的身上
+    //初始化函数
+    Tab.prototype.init = function (){
+        //console.log(this);// this--->allInput
+        //点击input操作p标签
+        var ele = this ;
+        console.log(ele);//ele---->allInput
+        for(var i=0;i< this.len;i++){
+            this.allInput[i].index = i ; 
+            this.allInput[i].onclick = function (){
+                ele.play(this.index) ;
+            };
+        }
+    };
+
+    Tab.prototype.play = function(index){
+        for(var i=0;i< this.len;i++){
+            this.allInput[i].style.background = "" ;//清除所有背景色
+            this.allP[i].style.display = "none" ;//隐藏所有的p标签
+        }
+        //this指向当前触发这个onclick事件的input
+        this.allP[index].style.display = "block" ;
+        this.allInput[index].style.background = "yellow" ;
+        this.n = index ;
+    };
+
+    Tab.prototype.autoPlay = function (){
+        var ele = this ;
+        this.timer = setInterval(function(){
+            ele.n++ ;
+            if(ele.n>ele.len-1){
+                ele.n = 0 ;
+            }
+            ele.play(ele.n) ;
+        },1000)
+    }
+
+    Tab.prototype.stop = function (){
+        clearInterval(this.timer) ;
+        this.timer = null;
+    }
+
+    Tab.prototype.playStatus = function(){
+        return !!this.timer ;
+    }
+
+    var div1 = document.getElementById('div1') ;
+    var div2 = document.getElementById("div2");
+    var tab1 = new Tab(div1);
+
+        tab1.init();
+    var tab2 = new Tab(div2);
+        tab2.init();
+        tab2.autoPlay();
+
+    //btn1 第一个自动播放
+    btn1.onclick = function (){
+        tab1.autoPlay();    
+    };
+
+    //btn2 第二个停止自动播放
+
+    btn2.onclick = function (){
+        tab2.stop();
+    };
+
+    //btn3 两个播放翻转
+    btn3.onclick = function (){
+        if( tab1.playStatus() ){
+            tab1.stop();
+        }else{
+            tab1.autoPlay();
+        }
+        if( tab2.playStatus() ){
+            tab2.stop();
+        }else{
+            tab2.autoPlay();
+        }
+    };
+    btn4.onclick = function(){
+         if( tab1.playStatus() ){
+            tab1.stop();
+        }
+    }
+</script>
